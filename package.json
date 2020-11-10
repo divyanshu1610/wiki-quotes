@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint 'src/**/*.js'",
@@ -47,6 +48,8 @@
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
     "prettier-eslint": "^11.0.0",
-    "prettier-eslint-cli": "^5.0.0"
+    "prettier-eslint-cli": "^5.0.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }

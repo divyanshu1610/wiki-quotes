@@ -1,13 +1,13 @@
-const {
+import {
   queryAPI,
   getSectionsForPage,
   getQuotesForSections,
   getQuotes,
-} = require('./functions')
+} from './functions.js'
 
-const { randomInt } = require('./utils')
+import { randomInt } from './utils.js'
 
-const getRandomQuote = (titleList) => {
+export const getRandomQuote = (titleList) => {
   const defaultList = [
     'Mahatma Gandhi',
     'Albert Einstein',
@@ -28,7 +28,7 @@ const getRandomQuote = (titleList) => {
   return getRandomQuoteByTitle(titleName)
 }
 
-const getRandomQuoteByTitle = (titleName) => {
+export const getRandomQuoteByTitle = (titleName) => {
   return new Promise((resolve, reject) => {
     let pageId = null
     queryAPI(titleName)
@@ -45,10 +45,3 @@ const getRandomQuoteByTitle = (titleName) => {
       .catch((err) => reject(err))
   })
 }
-
-const Wikiquotes = {
-  getRandomQuote,
-  getRandomQuoteByTitle,
-}
-
-module.exports = Wikiquotes

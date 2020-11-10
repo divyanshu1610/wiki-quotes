@@ -1,10 +1,9 @@
 /**
- *
  * Any sentence
  * Returns the input string with the first alphabet of each word capitalize
  */
 
-function capitalizeString(input) {
+export function capitalizeString(input) {
   const inputArray = input.split(' ')
   const output = []
   for (const s in inputArray) {
@@ -13,11 +12,6 @@ function capitalizeString(input) {
   return output.join(' ')
 }
 
-const randomInt = function (min, max) {
+export const randomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min
-}
-
-module.exports = {
-  capitalizeString,
-  randomInt,
 }

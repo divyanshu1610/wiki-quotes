@@ -1,8 +1,7 @@
-const fetch = require('node-fetch')
-const cheerio = require('cheerio')
-const { URLSearchParams } = require('url')
-const API_URL = require('./config')
-const { capitalizeString } = require('./utils')
+import fetch from 'node-fetch'
+import cheerio from 'cheerio'
+import { API_URL } from './config.js'
+import { capitalizeString } from './utils.js'
 
 /**
  * Query based on "titleName" parameter and return page id.
@@ -10,7 +9,7 @@ const { capitalizeString } = require('./utils')
  * Query includes "redirects" option to automatically traverse redirects.
  * All words will be capitalized as this generally yields more consistent results.
  */
-const queryAPI = (titleName) => {
+export const queryAPI = (titleName) => {
   titleName = capitalizeString(titleName)
   const params = new URLSearchParams({
     format: 'json',
@@ -53,7 +52,7 @@ const queryAPI = (titleName) => {
  * If no 1.x sections exists, returns section 1. Returns the titles that were used
  * in case there is a redirect.
  */
-const getSectionsForPage = (pageId) => {
+export const getSectionsForPage = (pageId) => {
   const params = new URLSearchParams({
     format: 'json',
     action: 'parse',
@@ -105,7 +104,7 @@ const getSectionsForPage = (pageId) => {
  * (usually the bold part is more well known).
  * in case there is a redirect.
  */
-const getQuotesForSections = (sections, pageId) => {
+export const getQuotesForSections = (sections, pageId) => {
   const promises = []
   for (const s in sections) {
     promises.push(_getQuotesForSection(s, pageId))
@@ -156,7 +155,7 @@ const _getQuotesForSection = (section, pageId) => {
 /**
  * Get all the quotes and do a little cleanup
  */
-const getQuotes = (quotes) => {
+export const getQuotes = (quotes) => {
   return new Promise((resolve, reject) => {
     if (!quotes) return reject(new Error('`quotes` is null: Required array'))
     const allQuotes = []
@@ -166,11 +165,4 @@ const getQuotes = (quotes) => {
     }
     resolve(allQuotes)
   })
-}
-
-module.exports = {
-  queryAPI,
-  getSectionsForPage,
-  getQuotesForSections,
-  getQuotes,
 }
