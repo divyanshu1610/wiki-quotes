@@ -1,0 +1,39 @@
+{
+  "name": "wiki-quotes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "prettier-eslint 'src/**/*.js' --write"
+  },
+  "keywords": [
+    "wikiquote",
+    "wiki",
+    "search",
+    "api",
+    "quote",
+    "quotes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanshu1610/wiki-quotes.git"
+  },
+  "author": "Divyanshu Maurya <divyanshu1610@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/divyanshu1610/wiki-quotes/issues"
+  },
+  "homepage": "https://github.com/divyanshu1610/wiki-quotes#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "prettier": "^2.1.2",
+    "prettier-eslint": "^11.0.0",
+    "prettier-eslint-cli": "^5.0.0"
+  }
+}
