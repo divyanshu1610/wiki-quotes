@@ -6,7 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "prettier-eslint 'src/**/*.js' --write"
+    "lint:fix": "prettier-eslint --write \"src/**/*.js\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
   },
   "keywords": [
     "wikiquote",
@@ -31,7 +42,9 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
+    "eslint": "6.6.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
     "prettier-eslint": "^11.0.0",
     "prettier-eslint-cli": "^5.0.0"
