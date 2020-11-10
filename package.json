@@ -6,8 +6,9 @@
   "module": "dist/bundle.esm.js",
   "browser": "dist/bundle.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild":"rimraf dist",
+    "test:watch": "jest --watch",
+    "test": "jest",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
     "lint": "eslint '**/*.js'",
     "lint:fix": "npm run lint -- --fix",
@@ -20,7 +21,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:fix"
+      "npm run format"
     ]
   },
   "keywords": [
@@ -43,11 +44,16 @@
   "homepage": "https://github.com/divyanshu1610/wiki-quotes#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "eslint-plugin-jest": "^24.1.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.12.1",
+    "@types/jest": "^26.0.15",
+    "babel-jest": "^26.6.3",
     "eslint": "6.6.0",
     "husky": "^4.3.0",
+    "jest": "^26.6.3",
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
     "prettier-eslint": "^11.0.0",

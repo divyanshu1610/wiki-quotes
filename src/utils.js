@@ -4,6 +4,7 @@
  */
 
 export function capitalizeString(input) {
+  if (!input) return input
   const inputArray = input.split(' ')
   const output = []
   for (const s in inputArray) {
