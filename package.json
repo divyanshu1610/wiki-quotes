@@ -2,14 +2,16 @@
   "name": "wiki-quotes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
+  "browser": "dist/bundle.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild":"rimraf dist",
     "build": "rollup -c",
-    "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "prettier-eslint --write \"src/**/*.js\""
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier '**/*.js' --write"
   },
   "husky": {
     "hooks": {
