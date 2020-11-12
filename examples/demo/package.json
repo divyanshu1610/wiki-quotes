@@ -1,0 +1,14 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Divyanshu Maurya <divyanshu1610@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "wiki-quotes": "file:../.."
+  }
+}
