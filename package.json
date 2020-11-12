@@ -6,8 +6,9 @@
   "module": "dist/bundle.esm.js",
   "browser": "dist/bundle.umd.js",
   "scripts": {
-    "test:watch": "jest --watch",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "lint": "eslint '**/*.js'",
