@@ -22,6 +22,7 @@ export const queryAPI = (titleName) => {
     fetch(API_URL, {
       method: 'POST',
       body: params,
+      mode: 'no-cors',
     })
       .then((res) => res.json())
       .then((data) => {
@@ -64,6 +65,7 @@ export const getSectionsForPage = (pageId) => {
     fetch(API_URL, {
       method: 'POST',
       body: params,
+      mode: 'no-cors',
     })
       .then((res) => res.json())
       .then((data) => {
@@ -136,13 +138,14 @@ const _getQuotesForSection = (section, pageId) => {
     fetch(API_URL, {
       method: 'POST',
       body: params,
+      mode: 'no-cors',
     })
       .then((res) => res.json())
       .then((result) => {
         const quotesArr = []
         const quotes = result.parse.text['*']
         const $ = cheerio.load(quotes)
-        $('li:not(li li)').each(function (i, elem) {
+        $('li:not(li li)').each(function () {
           const bolds = $(this).find('b').html()
           if (bolds !== null) quotesArr.push(bolds)
         })
