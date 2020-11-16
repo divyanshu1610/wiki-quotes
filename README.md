@@ -1,7 +1,8 @@
 # Wiki-Quotes
 
 [![Pipeline status][pipeline_badge]][pipeline_url]
-<!-- [![Published on NPM][npm_badge]][npm_url] -->
+[![Published on NPM][npm_badge]][npm_url]
+![Coverage][coverage_badge]
 
 An API for [Wikiquote][wikiquote]
 
@@ -118,10 +119,11 @@ Don't forget to add `Powered by Wikidata` to your project
 
 [MIT][license]
 
+[coverage_badge]: https://img.shields.io/coveralls/github/divyanshu1610/wiki-quotes
 [pipeline_badge]: https://github.com/divyanshu1610/wiki-quotes/workflows/%F0%9F%9B%A0%20Build/badge.svg?branch=main
 [pipeline_url]: https://github.com/divyanshu1610/wiki-quotes/workflows/%F0%9F%9B%A0%20Build/badge.svg?branch=main
-<!-- [npm_badge]: -->
-<!-- [npm_url]:  -->
+[npm_badge]: https://img.shields.io/npm/v/@divyanshu1610/wiki-quotes/latest?color=orange&label=npm&logo=npm
+[npm_url]: https://www.npmjs.com/package/@divyanshu1610/wiki-quotes
 [wikiquote]: https://www.wikiquote.org
 [npm]: https://www.npmjs.com
 [more_examples]: https://github.com/divyanshu1610/wiki-quotes/tree/main/examples
