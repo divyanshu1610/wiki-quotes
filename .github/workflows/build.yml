@@ -25,11 +25,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: '📦 install'
         run: npm ci
-      - name: ' build'
+      - name: '🛠 build'
         run: |
           npm run build
-          
-
+          sh -c '[ -f ./dist/bundle.cjs.js ]'
+          sh -c '[ -f ./dist/bundle.esm.js ]'
       - name: '🧪 test'
         run: npm run test:coverage
       - name: '👖 coveralls'
