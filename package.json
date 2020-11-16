@@ -4,7 +4,9 @@
   "description": "",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
-  "browser": "dist/bundle.umd.js",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -44,15 +46,15 @@
   },
   "homepage": "https://github.com/divyanshu1610/wiki-quotes#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "eslint-plugin-jest": "^24.1.0",
-    "node-fetch": "^2.6.1"
+    "axios": "^0.21.0",
+    "cheerio": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
     "@types/jest": "^26.0.15",
     "babel-jest": "^26.6.3",
     "eslint": "6.6.0",
+    "eslint-plugin-jest": "^24.1.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.1",
@@ -60,7 +62,6 @@
     "prettier-eslint": "^11.0.0",
     "prettier-eslint-cli": "^5.0.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.33.1",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup": "^2.33.1"
   }
 }
