@@ -1,14 +1,15 @@
 import './style.css'
-import React from 'react'
+import React, { useState } from 'react'
 import * as Wikiquotes from 'wiki-quotes'
 
 const App = () => {
-  // const [quote, setQuote] = useState({})
+  const [state, setState] = useState({ enabled: true, quote: '', title: '' })
 
   const handleClick = () => {
+    setState({ enabled: false })
     Wikiquotes.getRandomQuote()
       .then((q) => {
-        console.log(q)
+        setState({ ...q, enabled: true })
       })
       .catch((e) => console.log(e))
   }
@@ -16,9 +17,11 @@ const App = () => {
   return (
     <div>
       <h2>Random Quote</h2>
-      <button onClick={handleClick}>Get Random Quote</button>
-      {/* <h4>{quote.title}</h4>
-      <p>{quote.quote}</p> */}
+      <button disabled={!state.enabled} onClick={handleClick}>
+        Get Random Quote
+      </button>
+      <h4>{state.title}</h4>
+      <p>{state.quote}</p>
     </div>
   )
 }
