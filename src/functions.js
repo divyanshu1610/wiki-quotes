@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import axios from 'axios'
 import cheerio from 'cheerio'
 import { API_URL } from './config.js'
 import { capitalizeString } from './utils.js'
@@ -11,22 +11,23 @@ import { capitalizeString } from './utils.js'
  */
 export const queryAPI = (titleName) => {
   titleName = capitalizeString(titleName)
-  const params = new URLSearchParams({
+  const params = {
     format: 'json',
     action: 'query',
     redirects: '',
     titles: titleName,
-  })
+    origin: '*',
+  }
 
   return new Promise((resolve, reject) => {
-    fetch(API_URL, {
-      method: 'POST',
-      body: params,
+    axios({
+      url: API_URL,
+      method: 'post',
+      params: params,
       mode: 'no-cors',
     })
-      .then((res) => res.json())
-      .then((data) => {
-        const pages = data.query.pages
+      .then((res) => {
+        const pages = res.data.query.pages
         let pageId = -1
         for (const p in pages) {
           const page = pages[p]
@@ -54,23 +55,24 @@ export const queryAPI = (titleName) => {
  * in case there is a redirect.
  */
 export const getSectionsForPage = (pageId) => {
-  const params = new URLSearchParams({
+  const params = {
     format: 'json',
     action: 'parse',
     prop: 'sections',
     pageid: pageId,
-  })
+    origin: '*',
+  }
 
   return new Promise((resolve, reject) => {
-    fetch(API_URL, {
-      method: 'POST',
-      body: params,
+    axios({
+      url: API_URL,
+      method: 'post',
+      params: params,
       mode: 'no-cors',
     })
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res) => {
         const sectionArray = []
-        const sections = data.parse.sections
+        const sections = res.data.parse.sections
         for (const s in sections) {
           const splitNum = sections[s].number.split('.')
           if (splitNum.length > 1) {
@@ -127,23 +129,24 @@ export const getQuotesForSections = (sections, pageId) => {
 }
 
 const _getQuotesForSection = (section, pageId) => {
-  const params = new URLSearchParams({
+  const params = {
     format: 'json',
     action: 'parse',
     noimages: '',
     pageid: pageId,
     section: section,
-  })
+    origin: '*',
+  }
   return new Promise((resolve, reject) => {
-    fetch(API_URL, {
-      method: 'POST',
-      body: params,
+    axios({
+      url: API_URL,
+      method: 'post',
+      params: params,
       mode: 'no-cors',
     })
-      .then((res) => res.json())
       .then((result) => {
         const quotesArr = []
-        const quotes = result.parse.text['*']
+        const quotes = result.data.parse.text['*']
         const $ = cheerio.load(quotes)
         $('li:not(li li)').each(function () {
           const bolds = $(this).find('b').html()
